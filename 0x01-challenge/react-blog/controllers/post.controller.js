@@ -116,13 +116,9 @@ exports.loadPostsByPage = function(req,res){
     var end = req.params.end;
     request.get(config.baseUrl+'/static/posts.json',function(err,response){
 
-        res.json(response.body.posts.filter(function(post, index) {
-            if(index >= start && index < end) {
-                return true;
-            }
-
-            return false;
-        }));
+        res.json(response.body.posts.filter((post, index) =>
+            index >= start && index < end
+        ));
     });
 }
 

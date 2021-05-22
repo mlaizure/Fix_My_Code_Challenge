@@ -92,10 +92,7 @@ gulp.task('react', function() {
     generateJsxIncludes();
 
     return browserify(package.paths.app)
-        .transform('reactify',
-            {
-                stripTypes: true, es6: true
-            })
+        .transform('reactify', { stripTypes: true, es6: true })
         .bundle()
         .pipe(source(package.dest.app))
         .pipe(clean({force: true}))
